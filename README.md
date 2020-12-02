@@ -1,8 +1,8 @@
 To run
 
-sudo docker build ./ --tag car-server:latest
-docker pull mongo:latest
-docker-compose up
+```sudo docker build ./ --tag car-server:latest```
+```docker pull mongo:latest```
+```docker-compose up```
 
 To get from deployed api
 
