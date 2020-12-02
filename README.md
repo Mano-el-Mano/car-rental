@@ -1,20 +1,11 @@
 To run
 
 sudo docker build ./ --tag car-server:latest
-docker pull mongo:4.0.4
-
+docker pull mongo:latest
 docker-compose up
 
-sudo docker run --publish 4343:4343 --detach --name car-container car-server:latest
+To get from deployed api
 
-docker pull mongo:4.0.4
-docker run -d -p 27017:27017 --name mongodb mongo:4.0.4
+GET http://139.59.214.175:80/api/cars
 
-docker ps -a
-
-docker network create nest-mongo
-docker network connect nest-mongo car-container
-docker network connect nest-mongo mongodb
-
-see logs
-docker service logs containername
+POST http://139.59.214.175:80/api/cars/ratings/5fc70f510b2e0800129bb76b/{rating: number}
