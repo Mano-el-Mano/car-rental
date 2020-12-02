@@ -2,7 +2,7 @@ import { IsString, IsInt } from 'class-validator';
 
 export class InsertCarDto {
   @IsString()
-  name: string;
+  vehicle: string;
   @IsInt()
   year: number;
 }

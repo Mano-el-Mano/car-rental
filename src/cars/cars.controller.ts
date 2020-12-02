@@ -21,6 +21,11 @@ export class CarsController {
     return this.carsService.getRatings(params.id);
   }
 
+  @Post('ratings/:id/:rating')
+  insertRating(@Param() params) {
+    return this.carsService.insertCarRating(params.id, params.rating);
+  }
+
   @Get('average-rating/:id')
   getAverageRating(@Param() params) {
     return this.carsService.getAggregatedRating(params.id);

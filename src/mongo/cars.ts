@@ -1,12 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type CarsDocument = Cars & Document;
+export type CarDocument = Car & Document;
 
 @Schema()
-export class Cars {
+export class Car {
   @Prop()
-  name: string;
+  vehicle: string;
 
   @Prop()
   year: number;
@@ -15,4 +15,4 @@ export class Cars {
   ratings: number[];
 }
 
-export const CarsSchema = SchemaFactory.createForClass(Cars);
+export const CarsSchema = SchemaFactory.createForClass(Car);

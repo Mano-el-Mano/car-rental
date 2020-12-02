@@ -1,24 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Cars, CarsDocument } from '../mongo/cars';
+import { Car, CarDocument } from '../mongo/cars';
 import { InsertCarDto } from './dtos/insert-car.dto';
 
 @Injectable()
 export class CarsService {
   constructor(
-    @InjectModel(Cars.name)
-    private carsModel: Model<CarsDocument>,
+    @InjectModel(Car.name)
+    private carsModel: Model<CarDocument>,
   ) {}
 
   async getCars() {
-    return this.carsModel.find({});
+    const cars = await this.carsModel.find({});
+    console.log(cars);
+    return cars;
   }
 
   async insertCar(car: InsertCarDto) {
     return this.carsModel.create({
-      name: car.model,
       year: car.year,
+      vehicle: car.vehicle,
       ratings: [],
     });
   }
@@ -35,6 +37,11 @@ export class CarsService {
   }
 
   async getAggregatedRating(carId: number) {
-    return this.carsModel.find({});
+    const result = await this.carsModel.find(
+      { _id: carId },
+      { _id: 0, ratings: 1 },
+    );
+    console.log(result);
+    return result;
   }
 }
