@@ -1,4 +1,9 @@
+To run
+
 sudo docker build ./ --tag car-server:latest
+docker pull mongo:4.0.4
+
+docker-compose up
 
 sudo docker run --publish 4343:4343 --detach --name car-container car-server:latest
 
