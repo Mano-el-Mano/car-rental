@@ -1,14 +1,19 @@
-version: "3.8"
+version: "3.3"
 services:
   nestjs:
     build: .
     image: car-server
     ports:
      - "4343:4343"
-    links:
-    - "mongo"
-  app2:
+    networks:
+      - app
+  mongodb:
     build: .
     image: mongo
     ports:
-     - "27017:27017"
+     - "27017-27019:27017-27019"
+    networks:
+     - app
+
+networks: 
+  app:
